@@ -25,22 +25,15 @@ public class MultiThread {
         System.out.println("Main Thread iniziata...");
         long start = System.currentTimeMillis();
         
-        // Posso creare un THREAD e avviarlo immediatamente
+        // Ho creato i 3 thread
         Thread tic = new Thread (new TicTac("TIC"));
-        tic.start();
-        
-        // Posso creare un 2ndo THREAD e farlo iniziare qualche tempo dopo...
         Thread tac = new Thread(new TicTac("TAC"));
+        Thread toe = new Thread(new TicTac("TOE"));
+        //faccio partire tutti e 3 i thread contemporaneamente
+        tic.start();
+        tac.start();
+        toe.start();
         
-        try {
-            TimeUnit.MILLISECONDS.sleep(1111);
-            tac.start();  // avvio del secondo THREAD
-        } catch (InterruptedException e) {}
-        
-        try {
-            TimeUnit.MILLISECONDS.sleep(1234);
-        } catch (InterruptedException e) {}
-        tac.interrupt(); // stop 2nd THREAD
 
         
         long end = System.currentTimeMillis();
@@ -53,7 +46,7 @@ public class MultiThread {
 // +1 si puo estendere da un altra classe
 // +1 si possono passare parametri (usando il Costruttore)
 // +1 si puo' controllare quando un THREAD inizia indipendentemente da quando e' stato creato
-class TicTac implements Runnable {
+class TicTacToe implements Runnable {
     
     // non essesndo "static" c'e' una copia delle seguenti variabili per ogni THREAD 
     private String t;
