@@ -14,8 +14,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Matteo Palitto
  */
-public class MultiThread {
-
+public class Multithread {
     /**
      * @param args the command line arguments
      */
@@ -26,18 +25,30 @@ public class MultiThread {
         long start = System.currentTimeMillis();
         
         // Ho creato i 3 thread
-        Thread tic = new Thread (new TicTac("TIC"));
-        Thread tac = new Thread(new TicTac("TAC"));
-        Thread toe = new Thread(new TicTac("TOE"));
+        Thread tic = new Thread (new TicTacToe("TIC"));
+        Thread tac = new Thread(new TicTacToe("TAC"));
+        Thread toe = new Thread(new TicTacToe("TOE"));
         //faccio partire tutti e 3 i thread contemporaneamente
         tic.start();
         tac.start();
         toe.start();
         
-
+        try{
+            tic.join();
+        }catch(InterruptedException e){System.out.println(e);}
+        
+        try{
+            tac.join();
+        }catch(InterruptedException e){System.out.println(e);}
+        
+        try{
+            toe.join();
+        }catch(InterruptedException e){System.out.println(e);}
+        
         
         long end = System.currentTimeMillis();
         System.out.println("Main Thread completata! tempo di esecuzione: " + (end - start) + "ms");
+        System.out.println("Toe è capitato dopo di Tac: " + TicTacToe.conta + " volte;");
     }
     
 }
@@ -47,13 +58,14 @@ public class MultiThread {
 // +1 si possono passare parametri (usando il Costruttore)
 // +1 si puo' controllare quando un THREAD inizia indipendentemente da quando e' stato creato
 class TicTacToe implements Runnable {
-    
+    public static int conta = 0;
+    public static String T_Prec = "   ";
     // non essesndo "static" c'e' una copia delle seguenti variabili per ogni THREAD 
     private String t;
     private String msg;
 
     // Costruttore, possiamo usare il costruttore per passare dei parametri al THREAD
-    public TicTac (String s) {
+    public TicTacToe (String s) {
         this.t = s;
     }
     
@@ -76,7 +88,10 @@ class TicTacToe implements Runnable {
             }
             msg += t + ": " + i;
             System.out.println(msg);
-         
+            if(T_Prec.equals("TAC") && t.equals("TOE")){
+                conta++; 
+            }
+            T_Prec = t;
         }
     }
     
