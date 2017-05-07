@@ -76,7 +76,7 @@ class TicTacToe implements Runnable {
         int casuale=100+(int)(Math.random()*300); /*permette di generare numeri casuali tra un range di 100 e 300. ciò serve per 
         far partire i thread in maniera casuale. */
         
-        for (int i = 10; i > 0; i--) {
+        for (int i = 10; i > 0; i--) { //questo ciclo for serve a far partite i Thread da 10 e gli fa fare un conto alla rovescia
             msg = "<" + t + "> ";
             //System.out.print(msg);
             
@@ -88,10 +88,13 @@ class TicTacToe implements Runnable {
             }
             msg += t + ": " + i;
             System.out.println(msg);
-            if(T_Prec.equals("TAC") && t.equals("TOE")){
-                conta++; 
+            if(T_Prec.equals("TAC") && t.equals("TOE")){ /*confronta il thread precedente con il thread attuale
+            per verificare che prima di TOE ci sia TAC*/
+                conta++; //nel caso si verificasse la condizione si aggiorna il contatore
             }
-            T_Prec = t;
+            T_Prec = t; /*se invece non si è verificato la variabile T_Prec cambia il suo valore aggiornandosi
+            esempio: se la condizione non si è verificata perche T_Prec era TIC passa a questa riga di codice
+            che peremtte di aggiornare la variabile T_Prec con il thread che capita dopo esempio TOE. e così via.*/
         }
     }
     
