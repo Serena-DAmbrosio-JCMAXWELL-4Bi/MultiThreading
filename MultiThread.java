@@ -34,8 +34,9 @@ public class Multithread {
         toe.start();
         
         try{
-            tic.join();
-        }catch(InterruptedException e){System.out.println(e);}
+            tic.join(); //.join serve per aspettare il termine dei thread prima di continuare con l'esecuzione.
+        }catch(InterruptedException e){System.out.println(e);} 
+        // l'eccezione serve nel caso in cui il metodo join viene interrotto.
         
         try{
             tac.join();
@@ -46,7 +47,7 @@ public class Multithread {
         }catch(InterruptedException e){System.out.println(e);}
         
         
-        long end = System.currentTimeMillis();
+        long end = System.currentTimeMillis(); 
         System.out.println("Main Thread completata! tempo di esecuzione: " + (end - start) + "ms");
         System.out.println("Toe è capitato dopo di Tac: " + TicTacToe.conta + " volte;");
     }
