@@ -22,7 +22,7 @@ public class Multithread {
     // i vari THREADs poi evolvono indipendentemente dal "main" che puo' eventualmente terminare prima degli altri
     public static void main(String[] args) {
         System.out.println("Main Thread iniziata...");
-        long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis(); 
         
         // Ho creato i 3 thread
         Thread tic = new Thread (new TicTacToe("TIC"));
@@ -59,8 +59,8 @@ public class Multithread {
 // +1 si possono passare parametri (usando il Costruttore)
 // +1 si puo' controllare quando un THREAD inizia indipendentemente da quando e' stato creato
 class TicTacToe implements Runnable {
-    public static int conta = 0;
-    public static String T_Prec = "   ";
+    public static int conta = 0; //questa variabile è in condivisione con tutti e 3 i thread
+    public static String T_Prec = "   "; //questa variabile è in condivisione con tutti e 3 i thread
     // non essesndo "static" c'e' una copia delle seguenti variabili per ogni THREAD 
     private String t;
     private String msg;
@@ -91,10 +91,10 @@ class TicTacToe implements Runnable {
             System.out.println(msg);
             if(T_Prec.equals("TAC") && t.equals("TOE")){ /*confronta il thread precedente con il thread attuale
             per verificare che prima di TOE ci sia TAC*/
-                conta++; //nel caso si verificasse la condizione si aggiorna il contatore
+                conta++; //nel caso si verificasse la condizione si aggiorna il contatore del punteggio
             }
-            T_Prec = t; /*se invece non si è verificato la variabile T_Prec cambia il suo valore aggiornandosi
-            esempio: se la condizione non si è verificata perche T_Prec era TIC passa a questa riga di codice
+            T_Prec = t; /*la variabile T_Prec cambia il suo valore aggiornandosi.
+            Esempio: T_Prec era TIC passa a questa riga di codice
             che peremtte di aggiornare la variabile T_Prec con il thread che capita dopo esempio TOE. e così via.*/
         }
     }
