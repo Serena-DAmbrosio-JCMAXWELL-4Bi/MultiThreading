@@ -11,4 +11,4 @@ Per capire meglio che cos'è un thread clicca qui --> <i><a href="https://github
  Nella sezione MultiThread.java troverai tutto il codice scritto in java di questo esercizio. Nel caso lo si volesse eseguire occorre scaricare il progetto, importarlo su NetBeans ed eseguirlo cliccando sulla freccia verde che si trova in alto a sinistra.
  <br>
  <hr>
- Nella sezione wiki troverai il codice eseguito e ciò che si è appreso attraverso questo esercizio.</p>
+ Nella sezione wiki troverai il codice eseguito e ciò che si è appreso attraverso questo esercizio e i ringraziamenti.</p>
