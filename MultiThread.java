@@ -74,7 +74,7 @@ class TicTacToe implements Runnable {
     // se facessimo un overloading invece di un override il copilatore ci segnalerebbe l'errore
     // per approfondimenti http://lancill.blogspot.it/2012/11/annotations-override.html
     public void run() {
-        int casuale=100+(int)(Math.random()*300); /*permette di generare numeri casuali tra un range di 100 e 300. ciò serve per 
+        int casuale=100+(int)(Math.random()*300); /*permette di generare numeri casuali tra un range di 100 e 400. ciò serve per 
         far partire i thread in maniera casuale. */
         
         for (int i = 10; i > 0; i--) { //questo ciclo for serve a far partite i Thread da 10 e gli fa fare un conto alla rovescia
