@@ -31,7 +31,8 @@ public class Multithread {
         toe.start();
         
         try{
-            tic.join();
+            tic.join(); /*ho deciso di mettere il metodo join non solo per il toe maa anched per tic e tac perche voglio che 
+            la frase : Main thread terminata sia alla fine di tutto. solo per motivi di "ordine". */
             tac.join();
             toe.join();
         }catch(InterruptedException e){System.out.println(e);}
@@ -50,16 +51,16 @@ public class Multithread {
 // +1 si puo' controllare quando un THREAD inizia indipendentemente da quando e' stato creato
 
 
-class Monitor{
-    int conta = 0;
-    String Thread_p = " ";
+class Monitor{ //creo la classe monitor
+    int conta = 0; //variabile che funge da punteggio e si incrementa quando Toe e dopo Tac
+    String Thread_p = " "; //varabile che hanno in codivisione i vari thread.
 
 public synchronized void StampaConta(String name, String messaggino){
     int casuale=100+(int)(Math.random()*300); //numero casuale tra 100 e 400
     if(Thread_p.equals("TAC") && name.equals("TOE")){ /*confronta il thread precedente con il thread attuale
             per verificare che prima di TOE ci sia TAC*/
                 conta++; //nel caso si verificasse la condizione si aggiorna il contatore del punteggio
-                messaggino +=" <--------";
+                messaggino +=" --------";
     }
     try {
         TimeUnit.MILLISECONDS.sleep(casuale); //casuale ora diventa un numero rappresentante il tempo il MILLISECONDI
@@ -69,18 +70,18 @@ public synchronized void StampaConta(String name, String messaggino){
     System.out.println(messaggino);
 }
 }
-class TTT implements Runnable{
+class TTT implements Runnable{ //classe che crea i thread
     Monitor monitor;
-    private String t;
-    private String msg;
-    public TTT(String s, Monitor monitor){
+    private String t; //nome thread
+    private String msg; //messaggio che stampa il thread (es. Tac : 9)
+    public TTT(String s, Monitor monitor){ //costruttore
         this.monitor = monitor;
         this.t = s;
     }
 
 
-public void run() {
-    for (int i = 10; i > 0; i--) {
+public void run() { //in questo metodo ci sono istruzioni che vengono eseguite dal thread.
+    for (int i = 10; i > 0; i--) { //questo ciclo for permette di far partire i thread da 10 fino ad arrivare a 1
         msg = "<" + t + "> " + t + ": " + i;
         monitor.StampaConta(t, msg);
     }
