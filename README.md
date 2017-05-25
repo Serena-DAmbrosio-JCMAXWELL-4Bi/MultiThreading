@@ -9,7 +9,8 @@ A differenza dell'esercizio 1, si è usato i <i>monitor</i> i quali ci permetton
 Per capire meglio che cos'è un thread clicca qui --> <i><a href="https://github.com/Prof-Matteo-Palitto-JCMaxwell/MultiThreading" target="_blank">thread</a></i>.
  <br>
  <hr>
- Nella sezione MultiThread.java troverai tutto il codice scritto in java di questo esercizio. Nel caso lo si volesse eseguire occorre scaricare il progetto, importarlo su NetBeans ed eseguirlo cliccando sulla freccia verde che si trova in alto a sinistra.
+ Nella sezione TicTacToe.java troverai tutto il codice scritto in java di questo esercizio. Nel caso lo si volesse eseguire occorre scaricare il progetto, importarlo su NetBeans ed eseguirlo cliccando sulla freccia verde che si trova in alto a sinistra.
  <br>
- <hr>
- Nella sezione wiki troverai il codice eseguito e ciò che si è appreso attraverso questo esercizio e i ringraziamenti.</p>
+ <hr
+ Nella sezione wiki(TicTacToe) troverai il codice eseguito e ciò che si è appreso attraverso questo esercizio e i ringraziamenti.</p>
+
